@@ -110,6 +110,25 @@ body {
   box-shadow: 0 0 6px var(--accent-warn);
 }
 
+.new-session-btn {
+  background: var(--bg-panel-2);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.new-session-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* ---------- Board layout ---------- */
 
 .board {

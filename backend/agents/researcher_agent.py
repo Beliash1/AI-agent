@@ -9,10 +9,11 @@ import json
 
 from services.ollama import ask_ollama
 from tools.web_tool import web_search
+from config import DEFAULT_MODEL
 from prompts.system_prompts import RESEARCHER_AGENT_PROMPT
 
 
-async def research(query: str, model: str = "qwen3:4b") -> str:
+async def research(query: str, model: str = DEFAULT_MODEL) -> str:
     results = await web_search(query)
 
     if not results:

@@ -12,14 +12,16 @@ web_tool.py — ვებ-წვდომის ინსტრუმენტ�
 import httpx
 from bs4 import BeautifulSoup
 
+from config import WEB_MAX_RESULTS, WEB_TIMEOUT_SECONDS
+
 SEARCH_URL = "https://html.duckduckgo.com/html/"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; CiciAgent/1.0)"
 }
-TIMEOUT = 15.0
+TIMEOUT = WEB_TIMEOUT_SECONDS
 
 
-async def web_search(query: str, max_results: int = 5) -> list[dict]:
+async def web_search(query: str, max_results: int = WEB_MAX_RESULTS) -> list[dict]:
     """
     აბრუნებს სიას: [{"title": ..., "url": ..., "snippet": ...}, ...]
     """

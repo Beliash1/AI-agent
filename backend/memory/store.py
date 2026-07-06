@@ -11,10 +11,10 @@ import json
 import time
 from pathlib import Path
 
+from config import MAX_TURNS_IN_CONTEXT
+
 MEMORY_DIR = Path(__file__).parent / "sessions"
 MEMORY_DIR.mkdir(exist_ok=True)
-
-MAX_TURNS_IN_CONTEXT = 10  # რამდენი ბოლო შეტყობინება მიეწოდოს მოდელს კონტექსტში
 
 
 def _session_path(session_id: str) -> Path:

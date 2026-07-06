@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import "./App.css";
-
-const API_URL = "http://127.0.0.1:8000/agent";
+import { askAgent, checkOnline, clearSession } from "./lib/api";
 
 function generateSessionId() {
   return "cici-" + Math.random().toString(36).slice(2, 10);
@@ -26,9 +25,7 @@ export default function App() {
   const scrollRef = useRef(null);
 
   useEffect(() => {
-    fetch(API_URL.replace("/agent", "/docs"))
-      .then(() => setOnline(true))
-      .catch(() => setOnline(false));
+    checkOnline().then(setOnline);
   }, []);
 
   useEffect(() => {
@@ -48,19 +45,10 @@ export default function App() {
     setTrace([]);
 
     try {
-      const res = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: text,
-          model,
-          session_id: sessionId.current,
-        }),
+      const data = await askAgent(text, {
+        model,
+        sessionId: sessionId.current,
       });
-
-      if (!res.ok) throw new Error(`სერვერმა დააბრუნა ${res.status}`);
-
-      const data = await res.json();
       setTrace(data.steps || []);
 
       const raw =
@@ -88,6 +76,18 @@ export default function App() {
       ]);
       setStatus("error");
     }
+  }
+
+  async function handleNewSession() {
+    try {
+      await clearSession(sessionId.current);
+    } catch {
+      // თუ backend-ი ხაზგარეშეა, მაინც ლოკალურად ვასუფთავებთ ჩატს
+    }
+    sessionId.current = generateSessionId();
+    setMessages([]);
+    setTrace([]);
+    setStatus("idle");
   }
 
   function handleKeyDown(e) {
@@ -118,6 +118,15 @@ export default function App() {
           <span className="dot" />
           {online === null ? "მოწმდება..." : online ? "ონლაინ" : "ხაზგარეშე"}
         </div>
+
+        <button
+          type="button"
+          className="new-session-btn"
+          onClick={handleNewSession}
+          title="მეხსიერების გასუფთავება და ახალი საუბრის დაწყება"
+        >
+          ახალი საუბარი
+        </button>
       </header>
 
       <main className="board">

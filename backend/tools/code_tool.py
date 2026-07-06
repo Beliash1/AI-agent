@@ -16,10 +16,9 @@ import tempfile
 import os
 from dataclasses import dataclass
 
+from config import CODE_MAX_RETRIES as MAX_RETRIES
+from config import CODE_TIMEOUT_SECONDS as TIMEOUT_SECONDS
 from services.ollama import ask_ollama
-
-TIMEOUT_SECONDS = 10
-MAX_RETRIES = 3
 
 
 @dataclass

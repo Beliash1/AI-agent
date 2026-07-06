@@ -9,10 +9,11 @@ import json
 import re
 
 from services.ollama import ask_ollama
+from config import DEFAULT_MODEL
 from prompts.system_prompts import PLANNER_AGENT_PROMPT
 
 
-async def make_plan(user_message: str, model: str = "qwen3:4b") -> list[str]:
+async def make_plan(user_message: str, model: str = DEFAULT_MODEL) -> list[str]:
     prompt = f"{PLANNER_AGENT_PROMPT}\n\nმომხმარებლის მოთხოვნა: {user_message}"
     raw = await ask_ollama(prompt, model=model)
 

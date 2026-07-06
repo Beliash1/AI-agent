@@ -16,3 +16,26 @@ services:
       - OLLAMA_BASE_URL=http://localhost:11434
     depends_on:
       - ollama
+
+  # --- OpenHands (არასავალდებულო) ---
+  # ჩართე ეს სერვისი, თუ გინდა backend/agents/openhands_agent.py-მ რეალურად
+  # იმუშაოს (delegate_openhands action orchestrator-ში). დარწმუნდი, რომ:
+  #   1. .env-ში OPENHANDS_ENABLED=true და OPENHANDS_BASE_URL=http://127.0.0.1:3000
+  #      (ან docker ქსელის სახელი, თუ backend-იც კონტეინერშია)
+  #   2. LLM_API_KEY შევსებულია შენი რეალური provider-ის key-ით
+  #      (openhands-ს თავისი მოდელი სჭირდება — შეიძლება იყოს Ollama-ც,
+  #      მაგრამ ცალკე უნდა დააკონფიგურირო LiteLLM routing-ით)
+  #   3. ⚠️ ეს სერვისი Docker socket-ს იყენებს sandbox კონტეინერების
+  #      გასაშვებად — production-ში წაკითხე OpenHands-ის security guide-ი
+  #      (https://docs.openhands.dev) Docker-in-Docker იზოლაციაზე.
+  #
+  # openhands:
+  #   image: ghcr.io/openhands/agent-server:latest
+  #   container_name: openhands
+  #   ports:
+  #     - "3001:3000"   # 3000 open-webui-სთვისაა დაკავებული ზემოთ
+  #   environment:
+  #     - LLM_API_KEY=${LLM_API_KEY}
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - ./openhands-workspace:/workspace

@@ -15,9 +15,10 @@ workflows/runner.py — ავტომატური, წინასწარ
 import json
 from dataclasses import dataclass, field
 
-from ..agents.researcher_agent import research
-from ..agents.coder_agent import run_coder
-from ..tools.web_tool import fetch_url
+from agents.coder_agent import run_coder
+from agents.researcher_agent import research
+from config import DEFAULT_MODEL
+from tools.web_tool import fetch_url
 
 
 @dataclass
@@ -38,7 +39,7 @@ class WorkflowResult:
         return "\n\n".join(lines)
 
 
-async def run_workflow(steps: list[dict], model: str = "qwen3:4b") -> WorkflowResult:
+async def run_workflow(steps: list[dict], model: str = DEFAULT_MODEL) -> WorkflowResult:
     """
     ასრულებს ნაბიჯებს თანმიმდევრობით და აბრუნებს ყველა შედეგს ერთად.
     ნაბიჯებს შორის შეცდომა არ აჩერებს მთელ workflow-ს — გაგრძელდება

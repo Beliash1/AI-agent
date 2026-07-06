@@ -6,10 +6,11 @@ agents/coder_agent.py — სპეციალიზებული ქვე-�
 ერთნაირად შეძლოს ყველა ქვე-აგენტთან მუშაობა (researcher/coder/planner).
 """
 
+from config import DEFAULT_MODEL
 from tools.code_tool import self_correcting_run
 
 
-async def run_coder(task: str, model: str = "qwen3:4b") -> dict:
+async def run_coder(task: str, model: str = DEFAULT_MODEL) -> dict:
     """
     აბრუნებს: {"success": bool, "code": str, "output": str, "attempts": int}
     """
