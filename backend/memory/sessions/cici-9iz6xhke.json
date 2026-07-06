@@ -1,0 +1,12 @@
+[
+  {
+    "role": "user",
+    "content": "hello",
+    "timestamp": 1783347137.027726
+  },
+  {
+    "role": "assistant",
+    "content": "შეცდომა: Ollama-სთან დაკავშირება ვერ მოხერხდა. დარწმუნდი რომ 'ollama serve' გაშვებულია.",
+    "timestamp": 1783347437.147794
+  }
+]

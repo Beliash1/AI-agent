@@ -1,0 +1,12 @@
+[
+  {
+    "role": "user",
+    "content": "hello",
+    "timestamp": 1783346225.691012
+  },
+  {
+    "role": "assistant",
+    "content": "ბოდიში, Ollama-სთან დაკავშირება ვერ მოხერხდა.",
+    "timestamp": 1783346345.75534
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "role": "user",
+    "content": "hello",
+    "timestamp": 1783346538.1572108
+  },
+  {
+    "role": "assistant",
+    "content": "უცნობი შეცდომა.",
+    "timestamp": 1783346538.1747315
+  }
+]

@@ -1,0 +1,11 @@
+FROM qwen2.5:7b
+
+# ნაკლები RAM, სწრაფი CPU
+PARAMETER temperature 0.2
+PARAMETER top_p 0.9
+PARAMETER num_ctx 3072
+PARAMETER num_batch 1
+PARAMETER repeat_penalty 1.1
+
+# სტაბილური prompt სტრუქტურა
+TEMPLATE """{{ .System }}\nUser: {{ .Prompt }}\nAssistant:"""

@@ -1,0 +1,12 @@
+[
+  {
+    "role": "user",
+    "content": "hello",
+    "timestamp": 1783346563.0834603
+  },
+  {
+    "role": "assistant",
+    "content": "Ollama არ მუშაობს ამ მისამართზე: 127.0.0.1",
+    "timestamp": 1783346563.1272376
+  }
+]

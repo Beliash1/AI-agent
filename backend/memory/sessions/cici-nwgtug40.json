@@ -1,0 +1,22 @@
+[
+  {
+    "role": "user",
+    "content": "hello",
+    "timestamp": 1783346466.6190062
+  },
+  {
+    "role": "assistant",
+    "content": "უცნობი შეცდომა.",
+    "timestamp": 1783346466.6843696
+  },
+  {
+    "role": "user",
+    "content": "hello",
+    "timestamp": 1783346524.1876407
+  },
+  {
+    "role": "assistant",
+    "content": "უცნობი შეცდომა.",
+    "timestamp": 1783346524.207537
+  }
+]
